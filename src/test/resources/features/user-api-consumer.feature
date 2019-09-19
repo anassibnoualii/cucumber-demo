@@ -1,6 +1,6 @@
-Feature: Manage users
+Feature: Manage users consumer
   Scenario: Get all users
-    When i call GET on /users
+    When i call GET on /api/users
     Then the response body is :
       """
       [
@@ -28,7 +28,7 @@ Feature: Manage users
 
 
   Scenario: Get user by ID
-    When i call GET on /users/123456789
+    When i call GET on /api/users/123456789
     Then the response body is :
       """
        {
@@ -51,12 +51,12 @@ Feature: Manage users
             "age":25
          }
       """
-    When i call POST on /users with the request body
+    When i call POST on /api/users with the request body
     Then http status is 201
 
 
   Scenario: Delete user
-    When i call DELETE on /users/123456789 with the request body
+    When i call DELETE on /api/users/123456789 with the request body
     Then http status is 204
 
 
@@ -70,5 +70,5 @@ Feature: Manage users
           "age":26
        }
       """
-    And i call PUT on /users/123456789 with the request body
+    And i call PUT on /api/users/123456789 with the request body
     Then http status is 200

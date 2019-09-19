@@ -1,6 +1,7 @@
 package com.marocrafts.cucumber.demo.cucumber.steps;
 
 import com.marocrafts.cucumber.demo.cucumber.config.CucumberDemoIntegrationTests;
+import com.marocrafts.cucumber.demo.cucumber.config.Services;
 import com.marocrafts.cucumber.demo.cucumber.utils.SharedState;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
@@ -11,11 +12,15 @@ import gherkin.deps.com.google.gson.Gson;
 import gherkin.deps.com.google.gson.JsonElement;
 import org.json.JSONException;
 import org.skyscreamer.jsonassert.JSONAssert;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CucumberStepDefinitions extends CucumberDemoIntegrationTests {
 
+	@Autowired
+	private Services services;
 	@Before
 	public void init (){
 		SharedState.init();
@@ -23,12 +28,12 @@ public class CucumberStepDefinitions extends CucumberDemoIntegrationTests {
 
 	@When("i call GET on {word}")
 	public void whenICallGetWithPath(String path){
-		SharedState.responseEntity = getContent(path);
+		SharedState.responseEntity = services.getContent(path);
 	}
 
 	@When("i call POST on {word} with the request body")
 	public void iCallPostOnUsersWithTheFollowingRequestBody(String path) {
-		SharedState.responseEntity = postContent(path,SharedState.body);
+		SharedState.responseEntity = services.postContent(path,SharedState.body);
 	}
 	@Then("the response body is :$")
 	public void theResponseBodyIs(String doc) throws JSONException {
@@ -46,12 +51,12 @@ public class CucumberStepDefinitions extends CucumberDemoIntegrationTests {
 
 	@When("i call DELETE on {word} with the request body")
 	public void iCallDELETEOnUsersWithTheRequestBody(String path) {
-		SharedState.responseEntity = deleteContent(path);
+		SharedState.responseEntity = services.deleteContent(path);
 
 	}
 
 	@And("i call PUT on {word} with the request body")
 	public void iCallPUTOnUsersWithTheRequestBody(String path) {
-		SharedState.responseEntity = putContent(path,SharedState.body);
+		SharedState.responseEntity = services.putContent(path,SharedState.body);
 	}
 }
