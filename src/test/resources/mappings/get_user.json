@@ -1,0 +1,19 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/users/123456789"
+  },
+  "response": {
+    "status": 200,
+    "jsonBody":
+		{
+			"firstName":"ANASS",
+			"lastName":"IBNOU ALI",
+			"email":"Email@email.com",
+			"age":25
+		},
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

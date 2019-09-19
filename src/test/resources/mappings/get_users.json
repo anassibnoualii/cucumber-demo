@@ -1,0 +1,32 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/users"
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": [
+		{
+			"firstName":"ANASS",
+			"lastName":"IBNOU ALI",
+			"email":"Email@email.com",
+			"age":25
+		},
+		{
+			"firstName":"HAMZA",
+			"lastName":"IBNOU ALI",
+			"email":"Email@email.com",
+			"age":22
+		},
+		{
+			"firstName":"IKHLASS",
+			"lastName":"IBNOU ALI",
+			"email":"Email@email.com",
+			"age":6
+		}
+	],
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}
